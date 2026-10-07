@@ -20,6 +20,12 @@ public:
     virtual T* getFront() const = 0;       // look at the first item, nullptr if empty
     virtual bool isEmpty() const = 0;
     virtual int size() const = 0;
+
+    // New for Uno Players
+    virtual void addAnywhere(int position, T* value) = 0;
+    virtual void deleteAnywhere(int position) = 0;
+    virtual void reverse() = 0;
+    virtual void concat(List<T>* other) = 0;
 };
 
 #include "ArrayList.h"
