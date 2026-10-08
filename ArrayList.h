@@ -30,6 +30,28 @@ public:
         ++size_;
     }
 
+    void addAnywhere (int position, T* value) override {
+        if (position < 0 || position > size_) {
+            std::cout << "Invalid position." << std::endl;
+            return;
+        }
+        if (position == CAPACITY) {
+            std::cout << "ArrayList is full." << std::endl;
+            return;
+        }
+        if (position == 0)
+            addFront(value);
+        else if (position == size_)
+            addBack(value);
+        else {
+            for ( int i = size_; i > position; i--) {   // shifts all list values to the right of position over
+                data_[i] = data_[i - 1];
+            }
+            data_[position] = value;                    // inserts value into position without overwriting
+            ++size_;
+        }
+    }
+
     void deleteFront() override {
         if (size_ == 0) {
             std::cout << "ArrayList is empty." << std::endl;

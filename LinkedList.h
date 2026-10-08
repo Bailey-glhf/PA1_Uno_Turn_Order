@@ -33,6 +33,28 @@ public:
         ++size_;
     }
 
+    void addAnywhere (int position, T* value) override {
+        if (position < 0 || position > size_) {
+            std::cout << "Invalid position." << std::endl;
+            return;
+        }
+        if (position == 0)
+            addFront(value);
+        else if (position == size_)
+            addBack(value);
+        else {
+            Node<T>* current = head_;
+            Node<T>* fresh = new Node<T>(value);
+            for (int i = 0; i < position - 1; ++i) { // for loop finds the node before desired position
+                current = current->next;
+            }
+            fresh->next = current->next;            // directs fresh's next pointer to where ever current's next pointer is directed
+            current->next = fresh;                  // directs current's next pointer to fresh node
+                                                    // this puts the order to current -> fresh -> next node that current was originally pointed to
+            size_++;
+        }
+    }
+
     void deleteFront() override {
         if (head_ == nullptr) {
             std::cout << "LinkedList is empty." << std::endl;
