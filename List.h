@@ -17,6 +17,7 @@ public:
 
     // New for this lab.
     virtual void addBack(T* value) = 0;    // add at the end, list owns value
+    virtual void deleteBack() = 0;
     virtual T* getFront() const = 0;       // look at the first item, nullptr if empty
     virtual bool isEmpty() const = 0;
     virtual int size() const = 0;

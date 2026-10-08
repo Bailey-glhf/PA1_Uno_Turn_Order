@@ -70,6 +70,48 @@ public:
         --size_;
     }
 
+    void deleteBack() override {
+        if (head_ == nullptr) {
+            std::cout << "LinkedList is empty." << std::endl;
+            return;
+        }
+        Node<T>* doomed = head_;
+        for (int i = 0; i < size_ ; ++i) {
+            if (doomed->next != tail_)
+                doomed = doomed->next;
+        }
+        tail_ = doomed;
+        tail_->next = nullptr;
+        delete doomed->data;
+        delete doomed;
+        --size_;
+
+    }
+
+    void deleteAnywhere (int position) override {
+        if (position < 0 || position > (size_- 1)) {
+            std::cout << "Invalid position." << std::endl;
+            return;
+        }
+        if (position == 0) {
+            deleteFront();
+        }
+        else if (position == (size_ - 1)) {
+            deleteBack();
+        }
+        else {
+            Node<T>* current = head_;
+            for (int i = 0; i < position - 1; ++i) {
+                current = current->next;
+            }
+            Node<T>* doomed = current->next;
+            current->next = current->next->next;
+            delete doomed->data;
+            delete doomed;
+            --size_;
+        }
+    }
+
     T* getFront() const override {
         if (head_ == nullptr) {
             return nullptr;

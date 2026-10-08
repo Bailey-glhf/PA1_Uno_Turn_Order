@@ -64,6 +64,35 @@ public:
         --size_;
     }
 
+    void deleteBack() override {
+        if (size_ == 0) {
+            std::cout << "ArrayList is empty." << std::endl;
+            return;
+        }
+        delete data_[size_ - 1];
+        --size_;
+    }
+
+    void deleteAnywhere (int position) override {
+        if (position < 0 || position > (size_- 1)) {
+            std::cout << "Invalid position." << std::endl;
+            return;
+        }
+        if (position == 0) {
+            deleteFront();
+        }
+        else if (position == (size_ - 1)) {
+            deleteBack();
+        }
+        else {
+            delete data_[position-1];
+            for (int i = (position-1); i < size_ - 1; ++i) {
+                data_[i] = data_[i + 1];
+            }
+            --size_;
+        }
+    }
+
     T* getFront() const override {
         if (size_ == 0) {
             return nullptr;
