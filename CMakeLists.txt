@@ -8,4 +8,5 @@ add_executable(PA1_Uno_Turn_Order main.cpp
         Stack.h
         List.h
         LinkedList.h
-        ArrayList.h)
+        ArrayList.h
+        Node.h)
