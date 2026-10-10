@@ -75,17 +75,22 @@ public:
             std::cout << "LinkedList is empty." << std::endl;
             return;
         }
-        Node<T>* doomed = head_;
-        for (int i = 0; i < size_ ; ++i) {
-            if (doomed->next != tail_)
-                doomed = doomed->next;
+        if (head_ == tail_) {
+            deleteFront();
+            return;
         }
+
+        Node<T>* doomed = head_;
+        while (doomed -> next != tail_) {
+            doomed = doomed->next;
+        }
+
+        delete doomed->next->data;
+        delete doomed->next;
+
         tail_ = doomed;
         tail_->next = nullptr;
-        delete doomed->data;
-        delete doomed;
         --size_;
-
     }
 
     void deleteAnywhere (int position) override {
@@ -110,6 +115,51 @@ public:
             delete doomed;
             --size_;
         }
+    }
+
+    void reverse() override {
+        if (size_ <= 1) {
+            return;
+        }
+
+        Node<T>* previousOne = nullptr;
+        Node<T>* current = head_;
+        Node<T>* nextOne = nullptr;
+
+        tail_ = head_;
+        while (current != nullptr) {
+            nextOne = current->next;
+            current->next = previousOne;
+
+            previousOne = current;
+            current = nextOne;
+        }
+        head_ =previousOne;
+    }
+
+    void concat (List<T>* other) override {
+        LinkedList<T>* otherList = dynamic_cast<LinkedList<T>* >(other);
+        if ( otherList == nullptr ) {
+            std::cout << "Incompatible List Types." << std::endl;
+            return;
+        }
+        if ( otherList->isEmpty() ) {
+            return;
+        }
+        if (isEmpty()) {
+            head_ = otherList->head_;
+            tail_ = otherList->tail_;
+        }
+        else {
+            tail_->next = otherList->head_;
+            tail_ = otherList->tail_;
+        }
+        size_ += otherList->size_;
+
+        //no dangling pointers
+        otherList->size_ = 0;
+        otherList->head_ = nullptr;
+        otherList->tail_ = nullptr;
     }
 
     T* getFront() const override {
