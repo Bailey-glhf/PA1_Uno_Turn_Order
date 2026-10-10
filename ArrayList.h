@@ -35,7 +35,7 @@ public:
             std::cout << "Invalid position." << std::endl;
             return;
         }
-        if (position == CAPACITY) {
+        if (position == CAPACITY || size_ >= CAPACITY) {
             std::cout << "ArrayList is full." << std::endl;
             return;
         }
@@ -85,12 +85,43 @@ public:
             deleteBack();
         }
         else {
-            delete data_[position-1];
-            for (int i = (position-1); i < size_ - 1; ++i) {
+            delete data_[position];
+            for (int i = (position); i < size_ - 1; ++i) {
                 data_[i] = data_[i + 1];
             }
             --size_;
         }
+    }
+
+    void reverse() override {
+        if (size_ <= 1) {
+            return;
+        }
+
+        for (int i = 0; i < size_/2; ++i) {
+            T* temp = data_[i];
+            data_[i] = data_[size_ - 1 - i];
+            data_[size_ - 1 - i] = temp;
+        }
+    }
+
+    void concat (List<T>* other) override {
+        ArrayList<T>* otherList = dynamic_cast<ArrayList<T>* >(other);
+        if ( otherList == nullptr ) {
+            std::cout << "Incompatible List Types." << std::endl;
+            return;
+        }
+
+        if (size_ +otherList->size_ > CAPACITY) {
+            std::cout << "Not enough room to merge lists." << std::endl;
+            return;
+        }
+
+        for (int i = 0; i < otherList->size_; ++i) {
+            data_[size_+ i] = otherList->data_[i];
+        }
+        size_ += otherList->size_;
+        otherList->size_ = 0;
     }
 
     T* getFront() const override {
