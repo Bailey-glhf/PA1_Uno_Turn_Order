@@ -1,6 +1,8 @@
 #pragma once
 #include <ostream>
 #include <string>
+#include "Card.h"
+#include "Stack.h"
 
 class Player {
 public:
@@ -18,4 +20,5 @@ public:
 private:
     int id_;
     std::string name_;
+    Stack<Card*> hand_;
 };
