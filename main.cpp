@@ -41,13 +41,26 @@ int main() {
     std::cout << std::endl << "Table 1 players in order are: " << std::endl;
     tableOne->print();
 
+    std::cout << "Emily plays a reverse card!" << std::endl;
+    tableOne->reverse();
+    std::cout << "New order: ";
+    tableOne->print();
+    std::cout << "Looks like Emily got UNO and steps out for the rest to battle it out." << std::endl;
+    tableOne->deleteAnywhere(0);
+    tableOne->print();
+
+    std::cout << "Looks like another table is trying to join." << std::endl;
+
     tableTwo->addFront(new Player(1,"Eric"));
     tableTwo->addFront(new Player(2, "Michelle"));
     tableTwo->addFront(new Player(3, "Caity"));
-    tableTwo->addFront(new Player(4, "Maya"));
 
     std::cout << std::endl << "Table 2 players in order are: " << std::endl;
     tableTwo->print();
+
+    tableOne->concat(tableTwo.get());
+    std::cout << "Now that Table 2 has joined Table 1 lets see the lineup: " << std::endl;
+    tableOne->print();
 
 
     return 0;
