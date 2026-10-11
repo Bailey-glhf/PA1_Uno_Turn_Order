@@ -29,6 +29,26 @@ int main() {
 
     // ---- Part 2: your Uno scene goes below ----
 
+    std::cout << "== !!!LETS PLAY UNO!!! ==" << std::endl;
+    std::unique_ptr<List<Player>> tableOne = makeList<Player>();
+    std::unique_ptr<List<Player>> tableTwo = makeList<Player>();
+
+    tableOne->addFront(new Player(1,"Emily"));
+    tableOne->addFront(new Player(2, "Michael"));
+    tableOne->addFront(new Player(3, "Christopher"));
+    tableOne->addFront(new Player(4, "Jackie"));
+
+    std::cout << std::endl << "Table 1 players in order are: " << std::endl;
+    tableOne->print();
+
+    tableTwo->addFront(new Player(1,"Eric"));
+    tableTwo->addFront(new Player(2, "Michelle"));
+    tableTwo->addFront(new Player(3, "Caity"));
+    tableTwo->addFront(new Player(4, "Maya"));
+
+    std::cout << std::endl << "Table 2 players in order are: " << std::endl;
+    tableTwo->print();
+
 
     return 0;
 }
