@@ -37,31 +37,39 @@ int main() {
     tableOne->addFront(new Player(2, "Michael"));
     tableOne->addFront(new Player(3, "Christopher"));
     tableOne->addFront(new Player(4, "Jackie"));
+    tableTwo->addFront(new Player(5,"Eric"));
+    tableTwo->addFront(new Player(6, "Michelle"));
+    tableTwo->addFront(new Player(7, "Caity"));
 
-    std::cout << std::endl << "Table 1 players in order are: " << std::endl;
+    std::cout << "Table 1 players in order are: " << std::endl;
     tableOne->print();
 
-    std::cout << "Emily plays a reverse card!" << std::endl;
+    std::cout << std::endl << "Emily plays a reverse card!" << std::endl;
     tableOne->reverse();
     std::cout << "New order: ";
     tableOne->print();
-    std::cout << "Looks like Emily got UNO and steps out for the rest to battle it out." << std::endl;
+
+    std::cout << std::endl << "Looks like Emily got UNO first and ran out of cards, everyone else battles for 2nd place." << std::endl;
     tableOne->deleteAnywhere(0);
     tableOne->print();
 
-    std::cout << "Looks like another table is trying to join." << std::endl;
-
-    tableTwo->addFront(new Player(1,"Eric"));
-    tableTwo->addFront(new Player(2, "Michelle"));
-    tableTwo->addFront(new Player(3, "Caity"));
+    std::cout << std::endl << "Looks like another table is trying to join." << std::endl;
 
     std::cout << std::endl << "Table 2 players in order are: " << std::endl;
     tableTwo->print();
 
     tableOne->concat(tableTwo.get());
-    std::cout << "Now that Table 2 has joined Table 1 lets see the lineup: " << std::endl;
+    std::cout << std::endl << "Now that Table 2 has joined Table 1 lets see the lineup: " << std::endl;
     tableOne->print();
 
+    std::cout << std::endl << "Michael plays a reverse card!" << std::endl;
+    tableOne->reverse();
+    std::cout << "New order: ";
+    tableOne->print();
+
+    std::cout << std::endl << "Looks like another player wants to join the game, Maya pulls up a chair." << std::endl;
+    tableOne->addAnywhere(4, new Player (8, "Maya"));
+    tableOne->print();
 
     return 0;
 }
