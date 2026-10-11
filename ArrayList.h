@@ -34,7 +34,7 @@ public:
             std::cout << "ArrayList is full." << std::endl;
             return;
         }
-        data_[size_] = value;       // no shifting needed at the back
+        data_[size_] = value;                           // no shifting needed at the back
         ++size_;
     }
 

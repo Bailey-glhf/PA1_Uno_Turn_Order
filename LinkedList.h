@@ -173,7 +173,7 @@ public:
         Node<T>* current = head_;
         Node<T>* nextOne = nullptr;
 
-        //tail_ = head_;                => WITH TAIL
+        //tail_ = head_;                            => WITH TAIL
         while (current != nullptr) {
             nextOne = current->next;
             current->next = previousOne;
@@ -264,6 +264,6 @@ public:
 
 private:
     Node<T>* head_;
-    //Node<T>* tail_;               => WITH TAIL
+    //Node<T>* tail_;                               => WITH TAIL
     int size_;
 };
