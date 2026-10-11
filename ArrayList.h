@@ -1,8 +1,16 @@
+/*******************************************************************************
+* CS210-16 – Fall 2026
+* Project name: PA1_Uno_Turn_Order / ArrayList.h Class
+* Developer: Emily Bailey
+* 10/11/26
+* Description: Array List will be able to perform the following functions :
+* addFront, addBack, addAnywhere, deleteFront, deleteBack, deleteAnywhere
+* reverse, concat, getFront, isEmpty, size, print.
+******************************************************************************/
+
 #pragma once
 #include <iostream>
 #include "List.h"
-
-// Solution file. Lab 3's ArrayList plus addBack, getFront, isEmpty, size.
 
 template <typename T>
 class ArrayList : public List<T> {

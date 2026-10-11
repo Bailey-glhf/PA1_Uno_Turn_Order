@@ -1,32 +1,35 @@
+/*******************************************************************************
+* CS210-16 – Fall 2026
+* Project name: PA1_Uno_Turn_Order / List.h Class
+* Developer: Emily Bailey
+* 10/11/26
+* Description: Abstract base class for ArrayList and LinkedList Data Structures
+******************************************************************************/
 #pragma once
 #include <memory>
-
-// The List ADT. Same file as Lab 3, plus four new methods at the bottom
-// of the class. ArrayList and LinkedList both implement all of them.
 
 template <typename T>
 class List {
 public:
     virtual ~List() = default;
 
-    // From Lab 3.
     virtual void addFront(T* value) = 0;
+    virtual void addBack(T* value) = 0;
+    virtual void addAnywhere(int position, T* value) = 0;       //New for UNO
+
     virtual void deleteFront() = 0;
-    virtual bool search(T* value) const = 0;
-    virtual void print() const = 0;
-
-    // New for this lab.
-    virtual void addBack(T* value) = 0;    // add at the end, list owns value
     virtual void deleteBack() = 0;
-    virtual T* getFront() const = 0;       // look at the first item, nullptr if empty
-    virtual bool isEmpty() const = 0;
-    virtual int size() const = 0;
+    virtual void deleteAnywhere(int position) = 0;              //New for UNO
 
-    // New for Uno Players
-    virtual void addAnywhere(int position, T* value) = 0;
-    virtual void deleteAnywhere(int position) = 0;
-    virtual void reverse() = 0;
-    virtual void concat(List<T>* other) = 0;
+    virtual void reverse() = 0;                                 //New for UNO
+    virtual void concat(List<T>* other) = 0;                    //New for UNO
+
+    virtual T* getFront() const = 0;
+    virtual bool isEmpty() const = 0;
+    virtual bool search(T* value) const = 0;
+
+    virtual void print() const = 0;
+    virtual int size() const = 0;
 };
 
 #include "ArrayList.h"

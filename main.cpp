@@ -42,19 +42,21 @@ int main() {
     std::cout << "== !!!LETS PLAY UNO!!! ==" << std::endl;
     //creation of 2 seperate lists of Player objects
     std::unique_ptr<List<Player>> tableOne = makeList<Player>();
-    std::unique_ptr<List<Player>> tableTwo = makeList<Player>();
 
-    //adds players to both lists
+    //adds players to list
+    //List1
     tableOne->addFront(new Player(1,"Emily"));
     tableOne->addFront(new Player(2, "Michael"));
     tableOne->addFront(new Player(3, "Christopher"));
     tableOne->addFront(new Player(4, "Jackie"));
-    tableTwo->addFront(new Player(5,"Eric"));
-    tableTwo->addFront(new Player(6, "Michelle"));
-    tableTwo->addFront(new Player(7, "Caity"));
 
     //prints table 1 players
     std::cout << "Table 1 players in order are: " << std::endl;
+    tableOne->print();
+
+    //completes addAnywhere function and prints
+    std::cout << std::endl << "Looks like another player wants to join the game, Maya pulls up a chair." << std::endl;
+    tableOne->addAnywhere(2, new Player (5, "Maya"));
     tableOne->print();
 
     //completes reverse function and prints
@@ -66,27 +68,30 @@ int main() {
     //completes deleteAnywhere function and prints
     std::cout << std::endl << "Looks like Emily got UNO first and ran out of cards, everyone else battles for 2nd place." << std::endl;
     tableOne->deleteAnywhere(0);
+    std::cout << "New order: ";
     tableOne->print();
 
-    //prints table 2 players
+    std::unique_ptr<List<Player>> tableTwo = makeList<Player>();
+    //adds players to list
+    //List2
+    tableTwo->addFront(new Player(6,"Eric"));
+    tableTwo->addFront(new Player(7, "Michelle"));
+    tableTwo->addFront(new Player(8, "Caity"));
+
     std::cout << std::endl << "Looks like another table is trying to join." << std::endl;
     std::cout << std::endl << "Table 2 players in order are: " << std::endl;
     tableTwo->print();
 
     //completes concat function and prints
     tableOne->concat(tableTwo.get());
-    std::cout << std::endl << "Now that Table 2 has joined Table 1 lets see the lineup: " << std::endl;
+    std::cout << std::endl << "Now that Table 2 has joined Table 1 lets see the lineup." << std::endl;
+    std::cout << "New order: ";
     tableOne->print();
 
     //completes another reverse function and prints
     std::cout << std::endl << "Michael plays a reverse card!" << std::endl;
     tableOne->reverse();
     std::cout << "New order: ";
-    tableOne->print();
-
-    //completes addAnywhere function and prints
-    std::cout << std::endl << "Looks like another player wants to join the game, Maya pulls up a chair." << std::endl;
-    tableOne->addAnywhere(4, new Player (8, "Maya"));
     tableOne->print();
 
     return 0;
