@@ -17,8 +17,26 @@ public:
         return out << p.id_ << " " << p.name_;
     }
 
+    void showHand() const {
+        std::cout << name_ << "'s hand: ";
+        hand_.print();
+    }
+
+    void addToHand(Card* card) {
+        hand_.push(card);
+    }
+
+    //Uno hands implemented as FILO stacks
+    void removeFromHand() {
+        if (hand_.isEmpty()) {
+            std::cout << name_ << " has no more cards to play!" << std::endl;
+            return;
+        }
+        hand_.pop();
+    }
+
 private:
     int id_;
     std::string name_;
-    Stack<Card*> hand_;
+    Stack<Card> hand_;
 };
