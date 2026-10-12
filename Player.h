@@ -27,12 +27,12 @@ public:
     }
 
     //Uno hands implemented as FILO stacks
-    void removeFromHand() {
+    Card* playCard() {
         if (hand_.isEmpty()) {
             std::cout << name_ << " has no more cards to play!" << std::endl;
-            return;
+            return nullptr;
         }
-        hand_.pop();
+        return hand_.pop();
     }
 
 private:

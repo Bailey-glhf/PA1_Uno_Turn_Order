@@ -56,7 +56,16 @@ int main() {
     tableOne->addFront(p3);
     tableOne->addFront(p4);
 
-
+    //Deck class currently does not have a deal function
+    //Cards are manually dealt for testing purposes
+    p1->addToHand(new Card("Red","Four"));
+    p2->addToHand(new Card("Yellow","Seven"));
+    p3->addToHand(new Card("Green","One"));
+    p4->addToHand(new Card("Green","Eight"));
+    //skipped adding another because Emily's going to win immediately
+    p2->addToHand(new Card("Blue","Reverse"));
+    p3->addToHand(new Card("Red","Zero"));
+    p4->addToHand(new Card("Blue","Two"));
 
     //prints table 1 players
     std::cout << "Table 1 players in order are: " << std::endl;
@@ -68,7 +77,7 @@ int main() {
     tableOne->print();
 
     //completes reverse function and prints
-    std::cout << std::endl << "Emily plays a reverse card!" << std::endl;
+    std::cout << std::endl << "Emily plays: " << *p1->playCard() << " card!" << std::endl;
     tableOne->reverse();
     std::cout << "New order: ";
     tableOne->print();
@@ -96,8 +105,8 @@ int main() {
     std::cout << "New order: ";
     tableOne->print();
 
-    //completes another reverse function and prints
-    std::cout << std::endl << "Michael plays a reverse card!" << std::endl;
+    //completes reverse function and prints
+    std::cout << std::endl << "Michael plays: " << *p2->playCard() << " card!" << std::endl;
     tableOne->reverse();
     std::cout << "New order: ";
     tableOne->print();
