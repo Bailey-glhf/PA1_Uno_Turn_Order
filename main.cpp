@@ -58,7 +58,7 @@ int main() {
 
     //Deck class currently does not have a deal function
     //Cards are manually dealt for testing purposes
-    p1->addToHand(new Card("Red","Four"));
+    p1->addToHand(new Card("Red","Reverse"));
     p2->addToHand(new Card("Yellow","Seven"));
     p3->addToHand(new Card("Green","One"));
     p4->addToHand(new Card("Green","Eight"));
