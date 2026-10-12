@@ -77,7 +77,9 @@ int main() {
     tableOne->print();
 
     //completes reverse function and prints
-    std::cout << std::endl << "Emily plays: " << *p1->playCard() << " card!" << std::endl;
+    Card* playedCard1 = p1->playCard();
+    std::cout << std::endl << "Emily plays: " << *playedCard1 << " card!" << std::endl;
+    delete playedCard1;
     tableOne->reverse();
     std::cout << "New order: ";
     tableOne->print();
@@ -106,7 +108,9 @@ int main() {
     tableOne->print();
 
     //completes reverse function and prints
-    std::cout << std::endl << "Michael plays: " << *p2->playCard() << " card!" << std::endl;
+    Card* playedCard2 = p2->playCard();
+    std::cout << std::endl << "Michael plays: " << *playedCard2 << " card!" << std::endl;
+    delete playedCard2;
     tableOne->reverse();
     std::cout << "New order: ";
     tableOne->print();

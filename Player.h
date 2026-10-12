@@ -35,6 +35,13 @@ public:
         return hand_.pop();
     }
 
+    ~Player(){
+        while (!hand_.isEmpty()) {
+            Card* c = hand_.pop();
+            delete c;
+        }
+    }
+
 private:
     int id_;
     std::string name_;
