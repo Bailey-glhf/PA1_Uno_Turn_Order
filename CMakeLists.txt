@@ -10,4 +10,6 @@ add_executable(PA1_Uno_Turn_Order main.cpp
         LinkedList.h
         ArrayList.h
         Node.h
-        Card.h)
+        Card.h
+        Deck.h
+)

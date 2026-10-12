@@ -43,12 +43,20 @@ int main() {
     //creation of 2 seperate lists of Player objects
     std::unique_ptr<List<Player>> tableOne = makeList<Player>();
 
+    //creates players
+    Player* p1 = new Player (1,"Emily");
+    Player* p2 = new Player (2, "Michael");
+    Player* p3 = new Player (3, "Christopher");
+    Player* p4 = new Player (4, "Jackie");
+
     //adds players to list
     //List1
-    tableOne->addFront(new Player(1,"Emily"));
-    tableOne->addFront(new Player(2, "Michael"));
-    tableOne->addFront(new Player(3, "Christopher"));
-    tableOne->addFront(new Player(4, "Jackie"));
+    tableOne->addFront(p1);
+    tableOne->addFront(p2);
+    tableOne->addFront(p3);
+    tableOne->addFront(p4);
+
+
 
     //prints table 1 players
     std::cout << "Table 1 players in order are: " << std::endl;
